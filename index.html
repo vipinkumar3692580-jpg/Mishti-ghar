@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mishti Ghar | Taaza mithai aur namkeen</title>
+<meta name="description" content="Roz subah ka taaza mishti, namkeen aur dahi. WhatsApp par order karein, shop se utha lein ya ghar mangwayein.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Hind:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --leaf: #1f4d3a;
+    --leaf-deep: #153628;
+    --marigold: #f4b400;
+    --syrup: #c8325f;
+    --paper: #f8f9f5;
+    --ink: #1c2822;
+    --muted: #5b6a62;
+    --line: #d9dfd6;
+    --display: "Bricolage Grotesque", "Hind", sans-serif;
+    --body: "Hind", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 18px;
+    line-height: 1.55;
+  }
+  img, svg { max-width: 100%; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--syrup); outline-offset: 3px; }
+  .wrap { width: min(1120px, 100% - 32px); margin-inline: auto; }
+
+  /* Top bar */
+  .top { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; gap: 16px; }
+  .brand { font-family: var(--display); font-weight: 800; font-size: 1.5rem; text-decoration: none; letter-spacing: -0.02em; color: var(--leaf); }
+  .top nav { display: flex; gap: 22px; }
+  .top nav a { text-decoration: none; font-weight: 500; }
+  .top nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  @media (max-width: 560px) { .top nav { display: none; } }
+
+  /* Hero */
+  .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; padding: 40px 0 72px; }
+  .hero h1 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(2.4rem, 5.6vw, 4.4rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    margin: 0 0 20px;
+    color: var(--leaf-deep);
+    text-wrap: balance;
+  }
+  .hero p { font-size: 1.2rem; max-width: 34ch; margin: 0 0 28px; color: var(--muted); }
+  .btn {
+    display: inline-block;
+    background: var(--syrup);
+    color: #fff;
+    font: 600 1.05rem var(--body);
+    padding: 14px 26px;
+    border: 0;
+    border-radius: 999px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .btn:hover { background: #a82650; }
+  .btn.quiet { background: transparent; color: var(--leaf); box-shadow: inset 0 0 0 2px var(--leaf); margin-left: 10px; }
+  .btn.quiet:hover { background: var(--leaf); color: #fff; }
+
+  /* Counter board: the memorable element */
+  .board {
+    background: var(--leaf);
+    color: #fff;
+    padding: 28px 28px 22px;
+    border-radius: 6px;
+    border: 10px solid #8a5a2b;
+    box-shadow: 0 0 0 2px #6b4420;
+    transform: rotate(1.2deg);
+  }
+  .board h2 { font-family: var(--display); font-weight: 800; font-size: 1.6rem; margin: 0 0 14px; color: var(--marigold); letter-spacing: -0.01em; }
+  .board ul { list-style: none; margin: 0; padding: 0; }
+  .board li { display: flex; align-items: baseline; gap: 8px; padding: 7px 0; font-size: 1.12rem; opacity: 0; animation: chalk .5s ease forwards; }
+  .board li::after { content: ""; order: 2; flex: 1; border-bottom: 2px dotted rgba(255,255,255,.35); }
+  .board li span:first-child { order: 1; }
+  .board li span:last-child { order: 3; font-weight: 600; color: var(--marigold); }
+  .board li:nth-child(1) { animation-delay: .1s; }
+  .board li:nth-child(2) { animation-delay: .25s; }
+  .board li:nth-child(3) { animation-delay: .4s; }
+  .board li:nth-child(4) { animation-delay: .55s; }
+  .board li:nth-child(5) { animation-delay: .7s; }
+  .board small { display: block; margin-top: 14px; color: rgba(255,255,255,.7); font-size: .95rem; }
+  @keyframes chalk { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: none; } }
+  @media (max-width: 820px) {
+    .hero { grid-template-columns: 1fr; gap: 36px; padding-bottom: 56px; }
+    .board { transform: none; }
+  }
+
+  /* Menu */
+  .menu { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 64px 0; }
+  .menu h2, .visit h2 { font-family: var(--display); font-weight: 800; font-size: clamp(1.9rem, 4vw, 2.8rem); letter-spacing: -0.03em; margin: 0 0 8px; color: var(--leaf-deep); }
+  .menu .lead { color: var(--muted); margin: 0 0 36px; max-width: 52ch; }
+  .menu-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 56px; align-items: start; }
+  .group h3 { font-family: var(--display); font-size: 1.25rem; margin: 28px 0 4px; color: var(--syrup); }
+  .group:first-child h3 { margin-top: 0; }
+  .item { display: grid; grid-template-columns: 1fr auto auto; gap: 16px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .item .name { font-weight: 600; }
+  .item .desc { display: block; font-weight: 400; font-size: .95rem; color: var(--muted); }
+  .item .price { font-weight: 600; white-space: nowrap; }
+  .stepper { display: flex; align-items: center; gap: 4px; }
+  .stepper button {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 2px solid var(--leaf); background: #fff; color: var(--leaf);
+    font: 600 1.2rem/1 var(--body); cursor: pointer;
+  }
+  .stepper button:hover { background: var(--leaf); color: #fff; }
+  .stepper output { min-width: 62px; text-align: center; font-weight: 600; }
+
+  .cart { position: sticky; top: 20px; background: var(--paper); border: 2px solid var(--leaf); border-radius: 10px; padding: 24px; }
+  .cart h3 { font-family: var(--display); margin: 0 0 12px; font-size: 1.35rem; color: var(--leaf-deep); }
+  .cart ul { list-style: none; padding: 0; margin: 0 0 14px; min-height: 48px; }
+  .cart li { display: flex; justify-content: space-between; gap: 12px; padding: 5px 0; }
+  .cart .empty { color: var(--muted); }
+  .cart .total { display: flex; justify-content: space-between; font-weight: 600; font-size: 1.15rem; border-top: 2px solid var(--leaf); padding-top: 12px; margin-bottom: 16px; }
+  .cart .btn { width: 100%; text-align: center; }
+  .cart .btn[aria-disabled="true"] { opacity: .45; pointer-events: none; }
+  .cart .note { font-size: .9rem; color: var(--muted); margin: 12px 0 0; }
+  @media (max-width: 860px) {
+    .menu-grid { grid-template-columns: 1fr; gap: 36px; }
+    .cart { position: static; }
+  }
+  @media (max-width: 480px) {
+    .item { grid-template-columns: 1fr auto; }
+    .item .stepper { grid-column: 1 / -1; }
+  }
+
+  /* Visit */
+  .visit { padding: 72px 0; }
+  .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+  .visit p { margin: 0 0 18px; max-width: 42ch; }
+  dl { margin: 0; }
+  dt { font-weight: 600; color: var(--leaf); margin-top: 18px; }
+  dd { margin: 2px 0 0; }
+  .hours { width: 100%; border-collapse: collapse; }
+  .hours td { padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .hours td:last-child { text-align: right; font-weight: 600; }
+  @media (max-width: 760px) { .visit-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+  footer { background: var(--leaf-deep); color: rgba(255,255,255,.8); padding: 28px 0; font-size: .95rem; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .board li { animation: none; opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap top">
+  <a class="brand" href="#">Mishti Ghar</a>
+  <nav aria-label="Main">
+    <a href="#menu">Menu</a>
+    <a href="#visit">Shop par aayein</a>
+  </nav>
+</header>
+
+<main>
+  <section class="wrap hero">
+    <div>
+      <h1>Roz subah ka taaza mishti, seedha counter se.</h1>
+      <p>Rosogolla, sandesh, mishti doi aur garma-garam singara. Order karein, hum pack kar denge.</p>
+      <a class="btn" href="#menu">Menu dekhein</a>
+      <a class="btn quiet" href="#visit">Shop ka pata</a>
+    </div>
+
+    <aside class="board" aria-label="Aaj ke taaza daam">
+      <h2>Aaj ka taaza</h2>
+      <ul>
+        <li><span>Rosogolla</span><span>₹360/kg</span></li>
+        <li><span>Nolen gur sandesh</span><span>₹520/kg</span></li>
+        <li><span>Mishti doi</span><span>₹90/matka</span></li>
+        <li><span>Kaju katli</span><span>₹980/kg</span></li>
+        <li><span>Singara</span><span>₹15/piece</span></li>
+      </ul>
+      <small>Daam shop ke counter par badal sakte hain.</small>
+    </aside>
+  </section>
+
+  <section class="menu" id="menu">
+    <div class="wrap">
+      <h2>Menu aur order</h2>
+      <p class="lead">Jo chahiye woh jodein. Neeche "WhatsApp par bhejein" dabate hi aapka order humein chala jayega.</p>
+      <div class="menu-grid">
+        <div id="menu-list"></div>
+        <aside class="cart" aria-live="polite">
+          <h3>Aapka order</h3>
+          <ul id="cart-list"><li class="empty">Abhi kuch nahi joda.</li></ul>
+          <div class="total"><span>Kul</span><span id="cart-total">₹0</span></div>
+          <a class="btn" id="send" href="#" aria-disabled="true" target="_blank" rel="noopener">WhatsApp par bhejein</a>
+          <p class="note">Payment shop par ya delivery ke waqt hoga.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="visit" id="visit">
+    <div class="wrap visit-grid">
+      <div>
+        <h2>Shop par aayein</h2>
+        <p>Bade order ya shaadi aur tyohaar ke dibbe chahiye? Ek din pehle bata dein, hum taiyaar rakhenge.</p>
+        <dl>
+          <dt>Pata</dt>
+          <dd>Govind Ganj Bazaar, Dhanghata, Sant Kabir Nagar</dd>
+          <dt>Phone</dt>
+          <dd><a href="tel:+919511419484">+91 95114 19484</a></dd>
+        </dl>
+      </div>
+      <div>
+        <table class="hours">
+          <tbody>
+            <tr><td>Somvar se Shanivar</td><td>8:00 se 21:30</td></tr>
+            <tr><td>Ravivar</td><td>8:00 se 14:00, 17:00 se 21:00</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© Mishti Ghar</span>
+    <span>Taaza banta hai, taaza bikta hai.</span>
+  </div>
+</footer>
+
+<script>
+  // WhatsApp number (country code ke saath, bina + ya space ke)
+  var WHATSAPP_NUMBER = "919511419484";
+
+  var items = [
+    { group: "Mithai", id: "rosogolla", name: "Rosogolla", desc: "Narm, chhene ka, halki chashni mein", price: 360, unit: "kg" },
+    { group: "Mithai", id: "sandesh", name: "Nolen gur sandesh", desc: "Khajoor ke gur ke saath", price: 520, unit: "kg" },
+    { group: "Mithai", id: "kaju", name: "Kaju katli", desc: "Pure kaju, chaandi ke warq ke bina", price: 980, unit: "kg" },
+    { group: "Mithai", id: "rasmalai", name: "Rasmalai", desc: "Gaadhe, elaichi wale doodh mein", price: 40, unit: "pc" },
+    { group: "Mithai", id: "rabadi", name: "Makhana rabadi", desc: "Dheemi aanch par pakai, makhana ke saath", price: 480, unit: "kg" },
+    { group: "Mithai", id: "motichoor", name: "Moti choor ke laddu", desc: "Chhoti boondi, desi ghee mein", price: 440, unit: "kg" },
+    { group: "Namkeen aur nashta", id: "singara", name: "Singara", desc: "Garam, aloo aur matar bhara", price: 15, unit: "pc" },
+    { group: "Namkeen aur nashta", id: "kachori", name: "Kachori", desc: "Dal bhari, 2 piece ek plate", price: 40, unit: "pc" },
+    { group: "Dahi", id: "doi", name: "Mishti doi", desc: "Matke mein jami hui", price: 90, unit: "matka" }
+  ];
+  var qty = {};
+  items.forEach(function (i) { qty[i.id] = 0; });
+
+  function step(i) { return i.unit === "kg" ? 0.25 : 1; }
+  function label(i, q) {
+    if (i.unit === "kg") return q < 1 ? (q * 1000) + " g" : (q % 1 === 0 ? q + " kg" : q.toFixed(2).replace(/0$/, "") + " kg");
+    return q + (i.unit === "pc" ? " pc" : " matka");
+  }
+  function rupees(n) { return "₹" + Math.round(n).toLocaleString("en-IN"); }
+
+  var menuEl = document.getElementById("menu-list");
+  var groups = {};
+  items.forEach(function (i) { (groups[i.group] = groups[i.group] || []).push(i); });
+
+  Object.keys(groups).forEach(function (g) {
+    var sec = document.createElement("div");
+    sec.className = "group";
+    var h = document.createElement("h3");
+    h.textContent = g;
+    sec.appendChild(h);
+    groups[g].forEach(function (i) {
+      var row = document.createElement("div");
+      row.className = "item";
+      row.innerHTML =
+        '<div class="name">' + i.name + '<span class="desc">' + i.desc + '</span></div>' +
+        '<div class="price">' + rupees(i.price) + '/' + i.unit + '</div>' +
+        '<div class="stepper">' +
+          '<button type="button" aria-label="' + i.name + ' kam karein" data-id="' + i.id + '" data-d="-1">−</button>' +
+          '<output id="q-' + i.id + '">0</output>' +
+          '<button type="button" aria-label="' + i.name + ' badhayein" data-id="' + i.id + '" data-d="1">+</button>' +
+        '</div>';
+      sec.appendChild(row);
+    });
+    menuEl.appendChild(sec);
+  });
+
+  menuEl.addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-id]");
+    if (!b) return;
+    var item = items.find(function (i) { return i.id === b.dataset.id; });
+    var next = qty[item.id] + step(item) * Number(b.dataset.d);
+    qty[item.id] = Math.max(0, Math.round(next * 100) / 100);
+    render();
+  });
+
+  function render() {
+    var list = document.getElementById("cart-list");
+    var total = 0, lines = [];
+    list.innerHTML = "";
+    items.forEach(function (i) {
+      document.getElementById("q-" + i.id).textContent = label(i, qty[i.id]);
+      if (qty[i.id] > 0) {
+        var sub = qty[i.id] * i.price;
+        total += sub;
+        lines.push("- " + i.name + ": " + label(i, qty[i.id]) + " (" + rupees(sub) + ")");
+        var li = document.createElement("li");
+        li.innerHTML = "<span>" + i.name + " · " + label(i, qty[i.id]) + "</span><span>" + rupees(sub) + "</span>";
+        list.appendChild(li);
+      }
+    });
+    if (!lines.length) list.innerHTML = '<li class="empty">Abhi kuch nahi joda.</li>';
+    document.getElementById("cart-total").textContent = rupees(total);
+
+    var send = document.getElementById("send");
+    if (lines.length) {
+      var msg = "Namaste, mujhe yeh order dena hai:\n" + lines.join("\n") + "\nKul: " + rupees(total);
+      send.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg);
+      send.setAttribute("aria-disabled", "false");
+    } else {
+      send.href = "#";
+      send.setAttribute("aria-disabled", "true");
+    }
+  }
+  render();
+</script>
+</body>
+</html>
